@@ -5,12 +5,10 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 // import { NewPassword, RequestsPassword, loginWithOuth, subscribe } from '../../sevices/account'
 import './style.scss'
-import { ENV_CONFIG, REGEX, ROLES, VALIDATION_MSG } from '../../constant';
 // import { isEmptyObj, removeItemFrmLocalStorage, setCurrentUser } from '../../utils/genericUtilities';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import { Spin } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useValidation } from '../../constant/index'
 import { Key } from '@mui/icons-material';
 
 
