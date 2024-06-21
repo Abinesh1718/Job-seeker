@@ -3,6 +3,7 @@ export const ACCOUNT_API_URL = {
     jobSeekerSignup: "/user/create",
     candidatesSearch: "/searchuser",
     postjob: "/employer/postjob",
-    jobList:"/searchjob"
-
+    jobList: "/searchjob",
+    login: "/login",
+    userlogin:"/userlogin"
 }

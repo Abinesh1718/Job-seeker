@@ -28,8 +28,8 @@ const EmployerBanner = (props) => {
         <span>Back</span>
       </Button>
       <LoginBg className="SinginFormBgImg BannerSVG" />
-      {/* <div className="SinginFormCarouselContainer">
-      </div> */}
+      <div className="SinginFormCarouselContainer">
+      </div>
     </div>
   );
 }

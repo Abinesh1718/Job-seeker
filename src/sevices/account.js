@@ -24,3 +24,11 @@ export const PostJob = (body) => {
 export const joblistSearch = (body) => {
   return axiosInstance.post(ACCOUNT_API_URL.jobList, body)
 }
+export const login = (body) => {
+  return axiosInstance.post(ACCOUNT_API_URL.login, body)
+}
+export const userlogin = (body) => {
+  return axiosInstance.post(ACCOUNT_API_URL.userlogin, body)
+}
+
+

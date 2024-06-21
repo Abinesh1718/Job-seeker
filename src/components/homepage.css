@@ -59,7 +59,10 @@ html {
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 30px;
+  /* position: absolute;
+  top: 120px;
+  left: 190px; */
 }
 
 .job-search-section h1 {
@@ -72,6 +75,7 @@ html {
   height: 80px;
   display: inline-block;
 }
-.form-control{
+
+.form-control {
   height: 50px;
 }

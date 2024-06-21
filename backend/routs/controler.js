@@ -58,26 +58,56 @@ const OneData = async (req, res) => {
 const login = async (req, res) => {
 
     const { email, password } = req.body;
+    console.log(email, password);
 
-    const result = await pool.query('SELECT * FROM "user" WHERE email = $1', [email]);
+    const result = await pool.query('SELECT * FROM "employer_details" WHERE email = $1', [email]);
 
+    console.log(result.rows[0]);
 
-    if (result.rows[0].password === password) {
+    if (!result) {
+        res.status(500).send('Passowrd wrong');
+    } else {
         let accesstoken = jwt.sign({
             user: {
                 username: result.rows[0].firstname,
                 email: result.rows[0].email,
                 id: result.rows[0].id
             }
-        }, "abinesh", { expiresIn: "10m" })
+        }, "abinesh", { expiresIn: "1hr" })
 
         return res.json({ AccessToken: accesstoken });
 
-    } else {
-        res.status(500).send('Passowrd wrong');
     }
-
 }
+
+const userlogin = async (req, res) => {
+
+    const { email, password } = req.body;
+    console.log(email, password);
+
+    const result = await pool.query('SELECT * FROM "user_details" WHERE email = $1', [email]);
+
+    console.log(result?.rows[0]);
+
+    if (result?.rows[0] == undefined) {
+        res.status(500).send('Passowrd wrong');
+    } else if (result?.rows[0]?.id) {
+        let accesstoken = jwt.sign({
+            user: {
+                username: result?.rows[0]?.firstname,
+                email: result?.rows[0]?.email,
+                id: result?.rows[0]?.id
+            }
+        }, "abinesh", { expiresIn: "1hr" })
+
+        return res.json({ AccessToken: accesstoken });
+
+    }
+}
+
+
+
+
 const searchUser = async (req, res) => {
     const { search } = req.body;
 
@@ -171,4 +201,4 @@ const validation = async (req, res, next) => {
 
     }
 }
-module.exports = { searchJobs, postJob, searchUser, OneData, CreateEmployer, userRegister, CreateUser, login, validation }
+module.exports = { userlogin, searchJobs, postJob, searchUser, OneData, CreateEmployer, userRegister, CreateUser, login, validation }

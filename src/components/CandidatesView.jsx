@@ -36,6 +36,25 @@ function CandidatesView() {
   const handlechange = () => {
     navigate("/candidates")
   }
+  
+  const UserSkills = ({ userData }) => {
+    if (!userData || !userData.skills) {
+      return <div>No skills available</div>;
+    }
+    const skillString = userData.skills.replace(/[{}]/g, "");
+    const skillValues = skillString.split(",").map(skill => skill.trim());
+
+    console.log(skillValues);
+
+    return (
+      <ul>
+        {skillValues.map((skill, index) => (
+          <li key={index}>{skill}</li>
+        ))}
+      </ul>
+    );
+  };
+
 
   return (
     <div style={{ display: "flex", flexDirection: "row", alignItems: "start" }}>
@@ -66,10 +85,12 @@ function CandidatesView() {
                 <p className="card-text">{userData.career_break ? "Yes" : "No"}</p>
                 <hr />
                 <h5 className="card-subtitle mb-2">Skills :</h5>
-
-                {userData.skills && userData.skills.map((skill, index) => (
+                {console.log(userData?.skills)}
+                {/* 
+                {userData?.skills && userData?.skills.map((skill, index) => (
                   <li key={index}>{skill}</li>
-                ))}
+                ))} */}
+                <UserSkills userData={userData} />
 
               </div>
             </div>

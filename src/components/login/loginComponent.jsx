@@ -10,7 +10,9 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } 
 import { Spin } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Key } from '@mui/icons-material';
-
+import { login, userlogin } from '../../sevices/account';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginComponent = (props) => {
 
@@ -72,11 +74,39 @@ const LoginComponent = (props) => {
     if ((!emailError || passwordError) && (!email || !password)) {
       return
     }
-    if (roles === 'emp') {
-      navigate('/candidates');
-    } else {
-      navigate('/JobListing');
+    const body = {
+      email: email,
+      password: password
     }
+    if (roles === 'jobseeker') {
+      try {
+        const Login = await userlogin(body)
+        console.log(Login)
+        // setJob(dataList?.data)
+        navigate('/JobListing');
+      } catch (error) {
+        toast.error("Login failed. Please try again later.");
+        console.log(error);
+
+      }
+
+    } else {
+      try {
+        const Login = await login(body)
+        console.log(Login)
+        navigate('/candidates');
+      } catch (error) {
+        toast.error("Login failed. Please try again later.");
+        console.log(error);
+
+      }
+
+    }
+    // if (roles === 'emp') {
+    //   navigate('/candidates');
+    // } else {
+    //   navigate('/JobListing');
+    // }
   };
 
 
@@ -138,7 +168,7 @@ const LoginComponent = (props) => {
               />
             </Stack>
           </FormControl>
-          <Button disabled={!email && !password ? true : false}   type="submit" variant="contained" className="SinginFormBtn">
+          <Button disabled={!email && !password ? true : false} type="submit" variant="contained" className="SinginFormBtn">
             Sign in
           </Button>
           <Button type="button" onClick={Signup} variant="outlined" className="SinginFormLoginBtn">
@@ -146,6 +176,7 @@ const LoginComponent = (props) => {
           </Button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }

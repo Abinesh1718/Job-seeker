@@ -105,7 +105,7 @@ function JobSeekerSignupForm() {
         </div>
         <div className="form-group">
           <label>Disability:</label>
-          <input type="email" name="disability" value={formData.email} onChange={handleChange} className="form-control" />
+          <input type="text" name="disability"  onChange={handleChange} className="form-control" />
         </div>
 
         <div className="form-group">

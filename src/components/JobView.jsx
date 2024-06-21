@@ -8,14 +8,6 @@ function JobView() {
   const navigate = useNavigate();
   const [jobData, setjobData] = useState({})
 
-  // const job = {
-  //   companyLogo: require('../assets/images/com-logo-3.png'), // Ensure you have the correct path to your logo
-  //   companyName: 'Example Company',
-  //   jobTitle: 'Software Engineer',
-  //   skills: 'JavaScript, React, Node.js',
-  //   requirements: '2+ years of experience, Bachelor\'s degree in Computer Science',
-  //   description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, ex doloremque dignissimos excepturi quisquam fugit aperiam sit molestias similique architecto, odit velit labore! Accusamus incidunt sapiente delectus iusto atque nisi!",
-  // };
   const handleGoBack = () => {
     navigate(-1);
   };

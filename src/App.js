@@ -31,11 +31,6 @@ function App() {
         <Route path="/EmployerSignup" element={<EmployerSignupForm />} />
         <Route path="/JobPostCreate" element={<JobPostCreateForm />} />
         <Route path="/MyJObListing" element={<MyJObListing />} />
-
-
-        
-
-
       </Routes>
     </BrowserRouter>
   );
